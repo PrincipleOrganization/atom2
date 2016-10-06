@@ -1,0 +1,16 @@
+#!/usr/bin/env node
+
+'use strict';
+
+/**
+* Module dependencies.
+**/
+
+const Application = require('./lib/application');
+
+/**
+* Module body.
+**/
+
+global.app = new Application();
+global.app.start();
