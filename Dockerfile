@@ -19,6 +19,10 @@ RUN apt-get install -y nodejs
 RUN cd $WORKING_DIR
 RUN npm i
 RUN cd $WORKING_DIR
+RUN chmod 755 run.sh
+
+# Windows add specific CR LF to the end of line
+RUN sed -i -e 's/\r$//' run.sh
 
 EXPOSE 4000
 
