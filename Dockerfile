@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ioft/armhf-ubuntu
 
 MAINTAINER Princip <principle.main@gmail.com>
 
@@ -9,7 +9,7 @@ WORKDIR $WORKING_DIR
 
 ADD ./distr $WORKING_DIR
 
-RUN rm /bin/sh && ln -s /bin/bash /bin/sh
+RUN sudo rm /bin/s/h && ln -s /bin/bash /bin/sh
 RUN chmod 755 $WORKING_DIR
 RUN apt-get update && apt-get upgrade -y
 RUN apt-get install curl -y
