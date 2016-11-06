@@ -15,7 +15,6 @@ RUN apt-get update && apt-get upgrade -y
 RUN apt-get install curl wget -y
 RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
 RUN apt-get install -y nodejs
-RUN sudo apt-get install unixodbc unixodbc-dev -y
 RUN cd $WORKING_DIR
 RUN npm i
 RUN cd $WORKING_DIR
