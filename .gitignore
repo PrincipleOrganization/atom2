@@ -1,4 +1,44 @@
+### Node ###
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Dependency directory
 node_modules
+
+# Optional npm cache directory
+.npm
+npm-debug.log
+
+### OSX ###
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+### Build ###
 flows.json
 .flows.json.backup
 distr
+.DS_Store
+
+### Runtime data ###
+*.pid

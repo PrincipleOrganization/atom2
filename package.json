@@ -3,20 +3,24 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node start",
-    "build": "node ./node_modules/gulp/bin/gulp.js build"
+    "prepare": "chmod 755 run.sh",
+    "start": "./run.sh",
+    "build": "node ./node_modules/gulp/bin/gulp.js build",
+    "dockerize-arm": "npm run build; docker build -t princip/atom2:arm .; docker push princip/atom2:arm",
+    "dockerize-x": "npm run build; docker build -f Dockerfile_x -t princip/atom2:x .; docker push princip/atom2:x"
   },
   "dependencies": {
-    "body-parser": "~1.15.1",
-    "cookie-parser": "~1.4.3",
-    "debug": "~2.2.0",
-    "express": "~4.13.4",
-    "morgan": "~1.7.0",
-    "node-red": "^0.14.6",
-    "serve-favicon": "~2.3.0"
+    "body-parser": "1.15.1",
+    "cookie-parser": "1.4.3",
+    "debug": "2.2.0",
+    "express": "4.13.4",
+    "morgan": "1.7.0",
+    "node-red": "0.15.2",
+    "node-red-contrib-postgres": "^0.5.1",
+    "serve-favicon": "2.3.0"
   },
   "devDependencies": {
-    "async": "^2.0.1",
-    "gulp": "^3.9.1"
+    "async": "2.0.1",
+    "gulp": "3.9.1"
   }
 }
