@@ -15,8 +15,8 @@
     "debug": "2.2.0",
     "express": "4.13.4",
     "morgan": "1.7.0",
-    "node-red": "0.15.2",
-    "node-red-contrib-postgres": "^0.5.1",
+    "node-red": "0.14.6",
+    "node-red-contrib-postgres": "0.5.1",
     "serve-favicon": "2.3.0"
   },
   "devDependencies": {
