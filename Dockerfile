@@ -23,6 +23,6 @@ RUN chmod 755 run.sh
 # Windows add specific CR LF to the end of line
 RUN sed -i -e 's/\r$//' run.sh
 
-EXPOSE 4000
+EXPOSE 4000-6000
 
 CMD ./run.sh
