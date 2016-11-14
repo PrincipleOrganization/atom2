@@ -1,6 +1,6 @@
 {
-  "name": "atom2",
-  "version": "0.0.0",
+  "name": "atom",
+  "version": "2.1.0",
   "private": true,
   "scripts": {
     "prepare": "chmod 755 run.sh",
@@ -17,7 +17,7 @@
     "morgan": "1.7.0",
     "node-red": "0.14.6",
     "node-red-contrib-postgres": "0.5.1",
-    "node-red-contrib-socket-io-princip": "github:shamatienkoyaroslav/node-red-contrib-socket-io-princip",
+    "node-red-contrib-socket-io-princip": "github:shamatienkoyaroslav/node-red-contrib-socket-io-princip#0.9.1",
     "serve-favicon": "2.3.0"
   },
   "devDependencies": {
