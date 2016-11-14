@@ -17,7 +17,7 @@
     "morgan": "1.7.0",
     "node-red": "0.14.6",
     "node-red-contrib-postgres": "0.5.1",
-    "node-red-contrib-socket-io-princip": "github:shamatienkoyaroslav/node-red-contrib-socket-io-princip#0.9.1",
+    "node-red-contrib-socket-io-princip": "0.9.2",
     "serve-favicon": "2.3.0"
   },
   "devDependencies": {
