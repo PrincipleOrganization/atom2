@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.get('/', function(req, res, next) {
   res.json({
-    api: 1
+    api: 2
   });
 });
 
