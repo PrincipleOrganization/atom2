@@ -38,6 +38,8 @@ Temporary Items
 flows.json
 .flows.json.backup
 distr
+storage.json
+templates.json
 
 ### Runtime data ###
 *.pid
