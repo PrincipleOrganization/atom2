@@ -25,25 +25,25 @@ router.get('/reload', (req, res) => {
   });
 });
 
-// *** DEVICES
+// *** FLOWS
 
-router.get('/devices', (req, res) => {
-  res.json({payload: storage.getDevices()});
+router.get('/flows', (req, res) => {
+  res.json({payload: storage.getFlows()});
 });
 
-router.post('/device', (req, res) => {
-  let device = req.body;
-  res.json({payload: storage.addDevice(device)});
+router.post('/flow', (req, res) => {
+  let flow = req.body;
+  res.json({payload: storage.addFlow(flow)});
 });
 
-router.put('/device', (req, res) => {
-  let device = req.body;
-  res.json({payload: storage.updateDevice(device)});
+router.put('/flow', (req, res) => {
+  let flow = req.body;
+  res.json({payload: storage.updateFlow(flow)});
 });
 
-router.delete('/device', (req, res) => {
+router.delete('/flow', (req, res) => {
   let id = req.body.id;
-  res.json({payload: storage.removeDevice(id)});
+  res.json({payload: storage.removeFlow(id)});
 });
 
 // *** TEMPLATES
@@ -67,11 +67,16 @@ router.delete('/template', (req, res) => {
   res.json({payload: templates.removeTemplate(id, version)});
 });
 
-router.get('/generate-flow', (req, res) => {
-  const { template, flow } = req.query;
+router.get('/template-keys', (req, res) => {
+  let { id, version } = req.query;
+  res.json({payload: templates.getKeys(id, version)});
+});
+
+router.post('/generate-flow', (req, res) => {
+  const { template, version, flow, params } = req.body;
 
   if (template && flow) {
-    templates.generate(template, flow, () => {
+    templates.generate(template, version, flow, params, () => {
       res.json({payload: true});
     });
   } else {
