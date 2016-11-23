@@ -40,6 +40,8 @@ flows.json
 distr
 storage.json
 templates.json
+data
+ssl
 
 ### Runtime data ###
 *.pid
