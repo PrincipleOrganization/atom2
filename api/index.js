@@ -6,8 +6,9 @@
 
 const express = require('express');
 const router = express.Router();
-const templates = require('../lib/templates');
-const storage = require('../lib/storage');
+const templates = require('../lib/data/templates');
+const storage = require('../lib/data/storage');
+const settings = require('../lib/data/settings');
 
 /**
 * Module body.
@@ -22,6 +23,20 @@ router.get('/', (req, res) => {
 router.get('/reload', (req, res) => {
   global.app.reloadEditor(() => {
     res.json({payload: true});
+  });
+});
+
+// *** TEMPLATES
+
+router.get('/settings', (req, res) => {
+  settings.getSettings((settings) => {
+    res.json(settings);
+  });
+});
+
+router.put('/settings', (req, res) => {
+  settings.setSettings(req.body, (result) => {
+    res.json(result);
   });
 });
 

@@ -8,11 +8,11 @@ global.__dirname__ = __dirname;
 * Module dependencies.
 **/
 
-const Application = require('./lib/application');
+const application = require('./lib/application');
 
 /**
 * Module body.
 **/
 
-global.app = new Application();
+global.app = application;
 global.app.start();

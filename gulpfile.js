@@ -16,6 +16,8 @@ gulp.task('build', () => {
   '!test',
   '!test/**',
   '!gulpfile.js',
-  '!README.md'])
+  '!README.md',
+  '!data',
+  '!data/**'])
     .pipe(gulp.dest(dir));
 });
