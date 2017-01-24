@@ -9,16 +9,57 @@ const router = express.Router();
 const templates = require('../lib/data/templates');
 const storage = require('../lib/data/storage');
 const settings = require('../lib/data/settings');
+const passport = require('passport');
 
 /**
 * Module body.
 **/
 
-router.get('/', (req, res) => {
+// *** PATHS
+
+router.get('/',  (req, res) => {
   res.json({
     api: 2
   });
 });
+
+router.get('/board', ensureAuthenticated, (req, res) => {
+  res.end('board');
+});
+
+// *** AUTH
+
+function ensureAuthenticated(req, res, next) {
+	if (req.isAuthenticated()) {
+		return next();
+	} else {
+		res.redirect('/api/v1/login');
+	}
+}
+
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(user, done) {
+  done(null, user);
+});
+
+// router.post('/login/local', passport.authenticate('local', {successRedirect: '/', failureRedirect: '/api/v1/login'}));
+
+router.post('/login/local', function(req, res, next) {
+  passport.authenticate('local', function(err, user) {
+    if (err) throw err;
+
+    console.log(user);
+
+    const success = false;
+    if (user) {success = true};
+    res.json({success: success});
+  })(req, res, next);
+});
+
+// *** FUNCTIONS
 
 router.get('/reload', (req, res) => {
   global.app.reloadEditor(() => {
