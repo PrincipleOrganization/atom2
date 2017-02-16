@@ -12,6 +12,7 @@ ADD ./distr $WORKING_DIR
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 RUN chmod 755 $WORKING_DIR
 RUN apt-get update && apt-get upgrade -y
+RUN apt-get install ffmpeg -y
 RUN cd $WORKING_DIR
 RUN npm i --production
 RUN cd $WORKING_DIR
