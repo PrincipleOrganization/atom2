@@ -1,4 +1,4 @@
-FROM ioft/armhf-ubuntu
+FROM ioft/armhf-ubuntu:16.04
 
 MAINTAINER Princip <principle.main@gmail.com>
 

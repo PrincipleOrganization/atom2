@@ -40,3 +40,9 @@ distr
 
 ### Runtime data ###
 *.pid
+*.jpg
+*.mp4
+*.png
+
+### Project ###
+TODO
