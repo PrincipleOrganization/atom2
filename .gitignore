@@ -35,13 +35,14 @@ Temporary Items
 .apdisk
 
 ### Build ###
-flows.json
-.flows.json.backup
 distr
-storage.json
-templates.json
-data
-ssl
+/data
 
 ### Runtime data ###
 *.pid
+*.jpg
+*.mp4
+*.png
+
+### Project ###
+TODO

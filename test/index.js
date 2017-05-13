@@ -5,46 +5,29 @@ const chai = require('chai');
 const expect = chai.expect;
 const assert = chai.assert;
 const S = require('string');
-const templates = require('../lib/templates');
-const storage = require('../lib/storage');
+const templates = require('../lib/data/templates');
+const storage = require('../lib/data/storage');
+const utils = require('../lib/utils');
+const settings = require('../lib/data/settings');
+const logger = require('../lib/logger');
 
-describe('Templates', () => {
-  it('generate', () => {
-    templates.generate('Test template', '1', 'Test 3');
-  });
-});
+describe('Settings', () => {
+  it('init', () => {
+    settings.init();
+    const s = settings.getSettingsSync();
+    console.log(s);
+    logger.err(s);
+    logger.info(s);
+  })
 
-describe('Storage', () => {
-  it('get all', () => {
-    let devices = storage.getDevices();
-  });
+  it('get', () => {
+    const s = settings.getSettingsSync();
+    console.log(s);
+  })
 
-  it('update device', () => {
-    let obj = {
-      _id: 0,
-      id: "ACM0",
-      template: {
-        id: "Test template",
-        version: "1"
-      }
-    };
-
-    storage.updateDevice(obj);
-  });
-
-  it('add device', () => {
-    let obj = {
-      id: "ACM3",
-      template: {
-        id: "Test template",
-        version: "1"
-      }
-    };
-
-    storage.addDevice(obj);
-  });
-
-  it('remove device', () => {
-    storage.removeDevice(3);
-  });
+  it('set', () => {
+    settings.setSettingsSync({logs: {storeLogs: true}});
+    const s = settings.getSettingsSync();
+    console.log(s);
+  })
 });
