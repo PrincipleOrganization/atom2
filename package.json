@@ -1,24 +1,28 @@
 {
   "name": "atom",
-  "version": "2.1.0",
+  "version": "2.2.1",
   "private": true,
   "scripts": {
     "test": "node ./node_modules/mocha/bin/mocha ./test/index.js",
     "prepare": "chmod 755 run.sh",
     "start": "./run.sh",
+    "bundle": "node ./node_modules/webpack/bin/webpack.js",
     "build": "rm -rf distr; node ./node_modules/gulp/bin/gulp.js build",
-    "dockerize-arm": "npm run build; docker build -t princip/atom2:arm .; docker push princip/atom2:arm",
-    "dockerize-x": "npm run build; docker build -f Dockerfile_x -t princip/atom2:x .; docker push princip/atom2:x"
+    "dockerize:arm": "npm run build; docker build -t princip/atom2:arm .; docker push princip/atom2:arm",
+    "dockerize:x": "npm run build; docker build -f Dockerfile_x -t princip/atom2:x .; docker push princip/atom2:x"
   },
   "dependencies": {
+    "bcrypt": "1.0.2",
     "body-parser": "1.15.1",
     "cookie-parser": "1.4.3",
     "debug": "2.2.0",
     "express": "4.13.4",
     "express-session": "1.14.2",
     "express-validator": "3.1.2",
+    "jsonwebtoken": "7.4.0",
+    "material-ui": "0.18.1",
     "morgan": "1.7.0",
-    "node-red": "0.16.0",
+    "node-red": "0.16.2",
     "node-red-contrib-async": "0.0.4",
     "node-red-contrib-azure-sql": "0.0.3",
     "node-red-contrib-chatbot": "0.6.11",
@@ -26,24 +30,38 @@
     "node-red-contrib-modbus": "0.11.14",
     "node-red-contrib-mssql": "0.0.6",
     "node-red-contrib-postgres": "0.5.1",
-    "node-red-contrib-princip-ffmpeg": "^0.1.2",
+    "node-red-contrib-princip-ffmpeg": "0.1.2",
     "node-red-contrib-rethinkdb": "0.3.1",
     "node-red-contrib-socket-io-princip": "0.9.5",
     "node-red-dashboard": "2.2.1",
     "node-red-node-mongodb": "0.0.11",
     "node-red-node-mysql": "0.0.12",
     "node-red-node-serialport": "0.4.2",
-    "node-red-node-sqlite": "^0.1.2",
+    "node-red-node-sqlite": "0.1.2",
     "passport": "0.3.2",
     "passport-local": "1.0.0",
+    "prop-types": "^15.5.10",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-tap-event-plugin": "^2.0.1",
     "serve-favicon": "2.3.0",
     "string": "3.3.3",
+    "validator": "^7.0.0",
     "winston": "2.3.0"
   },
   "devDependencies": {
     "async": "2.0.1",
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
     "chai": "3.5.0",
     "gulp": "3.9.1",
-    "mocha": "3.1.2"
+    "mocha": "3.1.2",
+    "webpack": "^2.5.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PrincipleOrganization/atom2.git"
   }
 }

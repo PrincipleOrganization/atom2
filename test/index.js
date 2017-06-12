@@ -16,8 +16,6 @@ describe('Settings', () => {
     settings.init();
     const s = settings.getSettingsSync();
     console.log(s);
-    logger.err(s);
-    logger.info(s);
   })
 
   it('get', () => {
@@ -26,7 +24,14 @@ describe('Settings', () => {
   })
 
   it('set', () => {
-    settings.setSettingsSync({logs: {storeLogs: true}});
+    settings.setSettingsSync({
+      logs: {storeLogs: false},
+      auth: {
+        username: 'princip',
+        password: 'princip',
+        jwtSecret: 'HweJUl8932cnFdj242376dcvnkj214872csjx5'
+      }
+    });
     const s = settings.getSettingsSync();
     console.log(s);
   })
