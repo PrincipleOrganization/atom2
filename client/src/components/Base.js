@@ -1,5 +1,5 @@
 import React from 'react';
-import Auth from '../modules/Auth';
+import { Auth, User } from '../modules';
 import AppBar from 'material-ui/AppBar';
 import FlatButton from 'material-ui/FlatButton';
 import IconButton from 'material-ui/IconButton';
@@ -75,8 +75,8 @@ export default class Base extends React.Component {
     API.openEditor();
   }
 
-  handleOpenDashboard() {
-    API.openDashboard();
+  handleOpenConfiguration() {
+    API.openConfiguration();
   }
 
   handleOpenSettings() {
@@ -89,6 +89,7 @@ export default class Base extends React.Component {
 
   handleLogout() {
     Auth.deauthenticateUser();
+    User.clear();
     this.isUserAuthenticated();
   }
 
@@ -101,6 +102,10 @@ export default class Base extends React.Component {
   // *** RENDER
 
   render() {
+    const isSupport = User.isSupport();
+    const isAdmin = User.isAdmin();
+    const isUser = User.isUser();
+
     return (
       <div>
         <AppBar
@@ -116,9 +121,9 @@ export default class Base extends React.Component {
             onLeftIconButtonTouchTap={this.handleToggleSideMenu}
           />
 
-          <MenuItem leftIcon={<IconDashboard />} onTouchTap={this.handleOpenDashboard}>Dashboard</MenuItem>
-          <MenuItem leftIcon={<IconCode />} onTouchTap={this.handleOpenEditor}>Editor</MenuItem>
-          <MenuItem leftIcon={<IconSettings />} onTouchTap={this.handleOpenSettings}>Settings</MenuItem>
+          <MenuItem leftIcon={<IconDashboard />} onTouchTap={this.handleOpenConfiguration}>Configuration</MenuItem>
+          { isSupport && <MenuItem leftIcon={<IconCode />} onTouchTap={this.handleOpenEditor}>Editor</MenuItem> }
+          { !isUser && <MenuItem leftIcon={<IconSettings />} onTouchTap={this.handleOpenSettings}>Settings</MenuItem> }
           <MenuItem leftIcon={<IconInfo />} onTouchTap={this.handleOpenInfo}>Information</MenuItem>
           <MenuItem leftIcon={<IconLogout />} onTouchTap={this.handleLogout}>Logout</MenuItem>
 
@@ -135,7 +140,7 @@ export default class Base extends React.Component {
         />
 
         { this.state.userAuthenticated ?
-          (this.state.currentPage === PAGE_INFO) ? (<InfoPage />) : (<SettingsPage />) :
+          (this.state.currentPage === PAGE_INFO) ? (<InfoPage />) : (<SettingsPage handleLogout={this.handleLogout} />) :
           (<LoginPage
             onLogin={this.isUserAuthenticated}
             toogleSnakbar={this.toogleSnakbar}

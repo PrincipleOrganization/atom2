@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const LOCATION_AUTH_LOGIN = '/auth/login';
 const LOCATION_EDITOR = '/api/editor';
-const LOCATION_DASHBOARD = '/api/platform/ui';
+const LOCATION_CONFIGURATION = '/api/platform/ui';
 const LOCATION_SETTINGS = '/api/settings';
 const LOCATION_INFO = '/api/info';
 const LOCATION_PLATFORM_INFO = '/api/platform/info';
@@ -23,8 +23,8 @@ class API {
     window.location = LOCATION_EDITOR;
   }
 
-  openDashboard() {
-    window.location = LOCATION_DASHBOARD;
+  openConfiguration() {
+    window.location = LOCATION_CONFIGURATION;
   }
 
   getSettings() {

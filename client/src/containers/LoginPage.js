@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-import Auth from '../modules/Auth';
+import { Auth, User } from '../modules';
 import LoginForm from '../components/LoginForm.js';
 import { API } from '../constants';
 
@@ -45,6 +45,7 @@ class LoginPage extends React.Component {
         });
 
         Auth.authenticateUser(response.data.token);
+        User.init(response.data.user);
 
         this.props.onLogin();
       })

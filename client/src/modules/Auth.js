@@ -1,5 +1,4 @@
 class Auth {
-
   /**
    * Authenticate a user. Save a token string in Local Storage
    *

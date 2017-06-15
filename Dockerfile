@@ -16,7 +16,7 @@ RUN apt-get install curl wget build-essential python unixodbc unixodbc-dev ffmpe
 RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
 RUN apt-get install -y nodejs
 RUN cd $WORKING_DIR
-RUN npm i --production
+RUN npm i --production --unsafe-perm --build-from-source
 RUN cd $WORKING_DIR
 RUN chmod 755 run.sh
 
