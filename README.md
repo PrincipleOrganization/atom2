@@ -2,4 +2,4 @@
 
 ### Install on ARM:
 
-`npm run i --unsafe-perm --build-from-source`
+`npm i --unsafe-perm --build-from-source`
