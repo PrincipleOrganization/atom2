@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Card, CardActions, CardHeader, CardText } from 'material-ui/Card';
-import FlatButton from 'material-ui/FlatButton';
+import RaisedButton from 'material-ui/RaisedButton';
 import Toggle from 'material-ui/Toggle';
 import TextField from 'material-ui/TextField';
 import { User } from '../modules';
@@ -201,7 +201,7 @@ class Settings extends React.Component {
               />
               <br />
               <CardActions>
-                <FlatButton label="Save" onTouchTap={this.handleSave} />
+                <RaisedButton primary={true} label="Save" onTouchTap={this.handleSave} />
               </CardActions>
             </div>
           </Card>

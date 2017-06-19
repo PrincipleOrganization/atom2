@@ -16,6 +16,7 @@ import SettingsPage from '../containers/SettingsPage.js';
 import InfoPage from '../containers/InfoPage.js';
 import LoginPage from '../containers/LoginPage.js';
 import { API } from '../constants';
+import Footer from './Footer';
 
 const PAGE_INFO = 'info';
 const PAGE_SETTINGS = 'settings';
@@ -108,45 +109,49 @@ export default class Base extends React.Component {
 
     return (
       <div>
-        <AppBar
-          title="Atom"
-          showMenuIconButton={this.state.userAuthenticated}
-          onLeftIconButtonTouchTap={this.handleToggleSideMenu}
-        />
-
-        <Drawer open={this.state.openedSideMenu}>
+        <div className="content">
           <AppBar
             title="Atom"
-            iconElementLeft={<IconButton><IconNavigationClose /></IconButton>}
+            showMenuIconButton={this.state.userAuthenticated}
             onLeftIconButtonTouchTap={this.handleToggleSideMenu}
           />
 
-          <MenuItem leftIcon={<IconDashboard />} onTouchTap={this.handleOpenConfiguration}>Configuration</MenuItem>
-          { isSupport && <MenuItem leftIcon={<IconCode />} onTouchTap={this.handleOpenEditor}>Editor</MenuItem> }
-          { !isUser && <MenuItem leftIcon={<IconSettings />} onTouchTap={this.handleOpenSettings}>Settings</MenuItem> }
-          <MenuItem leftIcon={<IconInfo />} onTouchTap={this.handleOpenInfo}>Information</MenuItem>
-          <MenuItem leftIcon={<IconLogout />} onTouchTap={this.handleLogout}>Logout</MenuItem>
+          <Drawer open={this.state.openedSideMenu}>
+            <AppBar
+              title="Atom"
+              iconElementLeft={<IconButton><IconNavigationClose /></IconButton>}
+              onLeftIconButtonTouchTap={this.handleToggleSideMenu}
+            />
 
-          {/* TODO: link to PRINCIP main page */}
-        </Drawer>
+            <MenuItem leftIcon={<IconDashboard />} onTouchTap={this.handleOpenConfiguration}>Configuration</MenuItem>
+            { isSupport && <MenuItem leftIcon={<IconCode />} onTouchTap={this.handleOpenEditor}>Editor</MenuItem> }
+            { !isUser && <MenuItem leftIcon={<IconSettings />} onTouchTap={this.handleOpenSettings}>Settings</MenuItem> }
+            <MenuItem leftIcon={<IconInfo />} onTouchTap={this.handleOpenInfo}>Information</MenuItem>
+            <MenuItem leftIcon={<IconLogout />} onTouchTap={this.handleLogout}>Logout</MenuItem>
 
-        <Snackbar
-          open={this.state.showSnakbar}
-          message={this.state.messageSnakbar}
-          autoHideDuration={4000}
-          onRequestClose={this.toogleSnakbar}
-          action="Close"
-          onActionTouchTap={this.handleRequestCloseSnakbar}
-        />
+            {/* TODO: link to PRINCIP main page */}
+          </Drawer>
 
-        { this.state.userAuthenticated ?
-          (this.state.currentPage === PAGE_INFO) ? (<InfoPage />) : (<SettingsPage handleLogout={this.handleLogout} />) :
-          (<LoginPage
-            onLogin={this.isUserAuthenticated}
-            toogleSnakbar={this.toogleSnakbar}
-          />)
-        }
+          <Snackbar
+            open={this.state.showSnakbar}
+            message={this.state.messageSnakbar}
+            autoHideDuration={4000}
+            onRequestClose={this.toogleSnakbar}
+            action="Close"
+            onActionTouchTap={this.handleRequestCloseSnakbar}
+          />
 
+          { this.state.userAuthenticated ?
+            (this.state.currentPage === PAGE_INFO) ? (<InfoPage />) : (<SettingsPage handleLogout={this.handleLogout} />) :
+            (<LoginPage
+              onLogin={this.isUserAuthenticated}
+              toogleSnakbar={this.toogleSnakbar}
+            />)
+          }
+
+        </div>
+
+        <Footer />
       </div>
     );
   }
