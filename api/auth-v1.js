@@ -9,6 +9,8 @@ const router = express.Router();
 const passport = require('passport');
 const validator = require('validator');
 
+const settingsModule = require('../lib/data/settings');
+
 // *** AUTH
 
 function validateLoginForm(payload) {
@@ -62,12 +64,20 @@ router.post('/login', (req, res, next) => {
       });
     }
 
-    return res.json({
+    const settings = settingsModule.getSettingsSync();
+
+    let response = {
       success: true,
       message: 'You have successfully logged in!',
       token,
       user: userData
-    });
+    };
+
+    if ('withSecret' in req.query) {
+      response.secret = settings.auth.jwtSecret;
+    }
+
+    return res.json(response);
   })(req, res, next);
 });
 
